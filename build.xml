@@ -44,7 +44,7 @@
               	        <delete file = "SpaceZombiesLauncher.jar"/>
               	        <delete file = "MANIFEST.MF"/>
               	        <manifest file = "MANIFEST.MF">
-              	            <attribute name = "Main-Class" value = "cx.it.hyperbadger.spacezombies.launcher.Main"/>
+              	            <attribute name = "Main-Class" value = "Main"/>
               	            <attribute name = "Class-Path" value = "."/>
               	        </manifest>
               	        <jar destfile = "SpaceZombiesLauncher.jar" basedir = "." includes = "*.class"  manifest = "MANIFEST.MF"/>
