@@ -3,7 +3,7 @@
               Any modifications will be overwritten.
               To include a user specific buildfile here, simply create one in the same
               directory with the processing instruction <?eclipse.ant.import?>
-              as the first entry and export the buildfile again. --><project basedir="." default="build" name="SpaceZombiesLauncher">
+              as the first entry and export the buildfile again. --><project basedir="." default="jar" name="SpaceZombiesLauncher">
     <property environment="env"/>
     <property name="debuglevel" value="source,lines,vars"/>
     <property name="target" value="1.6"/>
@@ -40,4 +40,13 @@
             <classpath refid="SpaceZombiesLauncher.classpath"/>
         </java>
     </target>
+              	<target name = "jar">
+              	        <delete file = "SpaceZombiesLauncher.jar"/>
+              	        <delete file = "MANIFEST.MF"/>
+              	        <manifest file = "MANIFEST.MF">
+              	            <attribute name = "Main-Class" value = "cx.it.hyperbadger.spacezombies.launcher.Main"/>
+              	            <attribute name = "Class-Path" value = "."/>
+              	        </manifest>
+              	        <jar destfile = "SpaceZombiesLauncher.jar" basedir = "." includes = "*.class"  manifest = "MANIFEST.MF"/>
+              	   </target>
 </project>
