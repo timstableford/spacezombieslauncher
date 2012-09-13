@@ -22,6 +22,8 @@ public class Main {
 	private ArrayList<Download> oldFile;
 	private static final String versionURL = "http://spacezombies.hyperbadger.it.cx/download/download.php?os="+System.getProperty("os.name").toLowerCase();
 	private static String[] args;
+	private GUI gui;
+	private Progress progress;
 	/**
 	 * @param args
 	 * @throws IOException 
@@ -31,8 +33,12 @@ public class Main {
 		Main.args = args;
 	}
 	public Main() throws IOException{
+		gui = new GUI();
+		progress = (Progress)gui;
 		setupGame();
+		progress.setTitle("SpaceZombies Launcher - Launching Game");
 		launchGame();
+		gui.dispose();
 	}
 	private void launchGame() throws IOException{
 		ProcessBuilder processBuilder = new ProcessBuilder();
@@ -52,39 +58,58 @@ public class Main {
 	}
 	private void setupGame() throws IOException{
 		//check and create directory structure
-				File layerOne = new File(Main.location);
-				if(!layerOne.exists()){
-					layerOne.mkdir();
-				}
-				File nativeLocation = new File(Main.location+System.getProperty("file.separator")+"native");
-				if(!nativeLocation.exists()){
-					nativeLocation.mkdir();
-				}
-				//load old file versions
-				oldFile = new ArrayList<Download>();
-				File vF = new File(location+System.getProperty("file.separator")+versionFile);
-				if(vF.exists()){
-					readXML(oldFile, vF);
-				}
-				//new file
-				File temp = File.createTempFile("version", "xml");
-				URL place = new URL(Main.versionURL);
-				FileUtils.copyURLToFile(place, temp);
-				ArrayList<Download> newFile = new ArrayList<Download>();
-				readXML(newFile,temp);
-				//get files for update
-				ArrayList<Download> r = getFilesForUpdate(oldFile, newFile);
-				if(r.size()>0){
-					FileUtils.copyFile(temp, vF);
-					System.out.println("Updating");
-					for(Download d: r){
-						System.out.println("Updating "+d.getName());
-						URL c = new URL(d.getURL());
-						FileUtils.copyURLToFile(c, new File(d.getLocation()));
-					}
-					System.out.println("Update Complete");
-				}
-				checkFiles(oldFile);
+		progress.setMax(2);
+		progress.setCurrent(0);
+		progress.setTitle("SpaceZombies Launcher - Checking directories");
+		File layerOne = new File(Main.location);
+		if(!layerOne.exists()){
+			layerOne.mkdir();
+		}
+		progress.setCurrent(1);
+		File nativeLocation = new File(Main.location+System.getProperty("file.separator")+"native");
+		if(!nativeLocation.exists()){
+			nativeLocation.mkdir();
+		}
+		progress.setCurrent(2);
+		progress.setTitle("SpaceZombies Launcher - Checking for Updates");
+		progress.setCurrent(0);
+		//load old file versions
+		oldFile = new ArrayList<Download>();
+		File vF = new File(location+System.getProperty("file.separator")+versionFile);
+		if(vF.exists()){
+			readXML(oldFile, vF);
+		}
+		progress.setCurrent(1);
+		//new file
+		File temp = File.createTempFile("version", "xml");
+		URL place = new URL(Main.versionURL);
+		FileUtils.copyURLToFile(place, temp);
+		ArrayList<Download> newFile = new ArrayList<Download>();
+		readXML(newFile,temp);
+		progress.setCurrent(2);
+		//get files for update
+		ArrayList<Download> r = getFilesForUpdate(oldFile, newFile);
+		if(r.size()>0){
+			progress.setTitle("SpaceZombies Launcher - Updating");
+			progress.setMax(r.size());
+			int i=0;
+			progress.setCurrent(i);
+			FileUtils.copyFile(temp, vF);
+			System.out.println("Updating");
+			for(Download d: r){
+				System.out.println("Updating "+d.getName());
+				URL c = new URL(d.getURL());
+				FileUtils.copyURLToFile(c, new File(d.getLocation()));
+				i++;
+				progress.setCurrent(i);
+			}
+			System.out.println("Update Complete");
+		}
+		progress.setTitle("SpaceZombies Launcher - Checking Files");
+		progress.setMax(1);
+		progress.setCurrent(0);
+		checkFiles(oldFile);
+		progress.setCurrent(1);
 	}
 	private void checkFiles(ArrayList<Download> down) throws MalformedURLException, IOException{
 		for(Download d: down){
