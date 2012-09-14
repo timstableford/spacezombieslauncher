@@ -6,7 +6,7 @@
     <property name="source" value="1.6"/>
     <path id="SpaceZombiesLauncher.classpath">
         <pathelement location="bin"/>
-        <pathelement location="src/cx/it/hyperbadger/spacezombies/launcher/commons-io-2.4.jar"/>
+        <pathelement location="lib/*.jar"/>
     </path>
     <target name="init">
         <mkdir dir="bin"/>
@@ -36,13 +36,13 @@
             <classpath refid="SpaceZombiesLauncher.classpath"/>
         </java>
     </target>
-              	<target name="jar">
-              	        <mkdir dir="jar"/>
-              	        <jar destfile="jar/SpaceZombiesLauncher.jar" basedir="bin">
-              	            <manifest>
-              	                <attribute name="Main-Class" value="cx.it.hyperbadger.spacezombies.launcher.Main"/>
-              	            </manifest>
-              	        	<zipgroupfileset dir="lib" includes="*.jar" /> 
-              	        </jar>
-              	    </target>
+	<target name="jar">
+		<mkdir dir="jar"/>
+		<jar destfile="jar/SpaceZombiesLauncher.jar" basedir="bin">
+			<manifest>
+				<attribute name="Main-Class" value="cx.it.hyperbadger.spacezombies.launcher.Main"/>
+			</manifest>
+			<zipgroupfileset dir="lib" includes="*.jar" /> 
+		</jar>
+	</target>
 </project>
