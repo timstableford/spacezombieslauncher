@@ -26,6 +26,8 @@ public class Download {
 			return Main.location+System.getProperty("file.separator")+this.name;
 		case NATIVE:
 			return Main.location+System.getProperty("file.separator")+"native"+System.getProperty("file.separator")+this.name;
+		case RESOURCE:
+			return Main.location+System.getProperty("file.separator")+"resources"+System.getProperty("file.separator")+this.name;
 		default:
 			return null;
 		}

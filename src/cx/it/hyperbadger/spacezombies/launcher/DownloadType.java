@@ -2,5 +2,6 @@ package cx.it.hyperbadger.spacezombies.launcher;
 
 public enum DownloadType {
 	JAR, 
-	NATIVE
+	NATIVE,
+	RESOURCE
 }

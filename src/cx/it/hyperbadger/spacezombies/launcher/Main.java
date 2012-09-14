@@ -70,6 +70,10 @@ public class Main {
 		if(!nativeLocation.exists()){
 			nativeLocation.mkdir();
 		}
+		File resourceLocation = new File(Main.location+System.getProperty("file.separator")+"resources");
+		if(!resourceLocation.exists()){
+			resourceLocation.mkdir();
+		}
 		progress.setCurrent(2);
 		progress.setTitle("SpaceZombies Launcher - Checking for Updates");
 		progress.setCurrent(0);
@@ -142,6 +146,21 @@ public class Main {
 			if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 				Element eElement = (Element) nNode;
 				dA.add(new Download(DownloadType.JAR,
+						getTagValue("name", eElement),
+						getTagValue("version", eElement),
+						getTagValue("path", eElement)
+						));
+			}
+		}
+	}
+	private void processResources(Document doc,ArrayList<Download> dA){
+		NodeList nList = doc.getElementsByTagName("resource");
+		for (int temp = 0; temp < nList.getLength(); temp++) {
+
+			Node nNode = nList.item(temp);
+			if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+				Element eElement = (Element) nNode;
+				dA.add(new Download(DownloadType.RESOURCE,
 						getTagValue("name", eElement),
 						getTagValue("version", eElement),
 						getTagValue("path", eElement)
