@@ -47,6 +47,6 @@
               	            <attribute name = "Main-Class" value = "Main"/>
               	            <attribute name = "Class-Path" value = "."/>
               	        </manifest>
-              	        <jar destfile = "SpaceZombiesLauncher.jar" basedir = "src" includes = "*.class"  manifest = "MANIFEST.MF"/>
+              	        <jar destfile = "SpaceZombiesLauncher.jar" basedir = "bin" includes = "*.class"  manifest = "MANIFEST.MF"/>
               	   </target>
 </project>
