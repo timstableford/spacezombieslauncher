@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- WARNING: Eclipse auto-generated file.
-              Any modifications will be overwritten.
-              To include a user specific buildfile here, simply create one in the same
-              directory with the processing instruction <?eclipse.ant.import?>
-              as the first entry and export the buildfile again. --><project basedir="." default="jar" name="SpaceZombiesLauncher">
+<project basedir="." default="jar" name="SpaceZombiesLauncher">
     <property environment="env"/>
     <property name="debuglevel" value="source,lines,vars"/>
     <property name="target" value="1.6"/>
@@ -46,6 +42,7 @@
               	            <manifest>
               	                <attribute name="Main-Class" value="cx.it.hyperbadger.spacezombies.launcher.Main"/>
               	            </manifest>
+              	        	<zipgroupfileset dir="." includes="*.jar" /> 
               	        </jar>
               	    </target>
 </project>
