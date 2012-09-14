@@ -39,11 +39,10 @@
               	<target name="jar">
               	        <mkdir dir="jar"/>
               	        <jar destfile="jar/SpaceZombiesLauncher.jar" basedir="bin">
-              	        	<zipgroupfileset dir="java" includes="SpaceZombiesLauncher.jar"/>
-              	        	<zipgroupfileset dir="bin/cx/it/hyperbadger/spacezombies/launcher" includes="*.jar"/>
               	            <manifest>
               	                <attribute name="Main-Class" value="cx.it.hyperbadger.spacezombies.launcher.Main"/>
               	            </manifest>
+              	        	<zipgroupfileset dir="." includes="*.jar" /> 
               	        </jar>
               	    </target>
 </project>
