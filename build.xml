@@ -42,7 +42,7 @@
               	            <manifest>
               	                <attribute name="Main-Class" value="cx.it.hyperbadger.spacezombies.launcher.Main"/>
               	            </manifest>
-              	        	<zipgroupfileset dir="." includes="*.jar" /> 
+              	        	<zipgroupfileset dir="bin/cx/it/hyperbadger/spacezombies/launcher" includes="*.jar" /> 
               	        </jar>
               	    </target>
 </project>
