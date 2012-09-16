@@ -37,10 +37,10 @@ public class Main {
 		progress = (Progress)gui;
 		setupGame();
 		progress.setTitle("SpaceZombies Launcher - Launching Game");
-		launchGame();
+		launchGame(null);
 		gui.dispose();
 	}
-	private void launchGame() throws IOException{
+	private void launchGame(ArrayList<String> parameters) throws IOException{
 		ProcessBuilder processBuilder = new ProcessBuilder();
 		ArrayList<String> commands = new ArrayList<String>();
 		commands.add("java");
@@ -51,6 +51,11 @@ public class Main {
 			}
 		}
 		commands.add(location+System.getProperty("file.separator")+"spacezombies.jar");
+		if(parameters!=null&&parameters.size()>0){
+			for(String s: parameters){
+				commands.add(s);
+			}
+		}
 		//commands.addAll(Arrays.asList(args));
 		System.out.println(commands);
 		processBuilder.command(commands);
