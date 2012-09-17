@@ -37,7 +37,7 @@
     </target>
 	<target name="jar">
 		<mkdir dir="jar"/>
-		<jar destfile="jar/SpaceZombiesLauncher.jar" basedir="bin">
+		<jar destfile="jar/spacezombieslauncher.jar" basedir="bin">
 			<manifest>
 				<attribute name="Main-Class" value="cx.it.hyperbadger.spacezombies.launcher.Main"/>
 			</manifest>
