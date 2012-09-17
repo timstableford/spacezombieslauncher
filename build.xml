@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <project basedir="." default="jar" name="SpaceZombiesLauncher">
+	<taskdef name="jarbundler" 
+	         classname="net.sourceforge.jarbundler.JarBundler" />
     <property environment="env"/>
     <property name="debuglevel" value="source,lines,vars"/>
     <property name="target" value="1.6"/>
