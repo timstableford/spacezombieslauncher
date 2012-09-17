@@ -45,12 +45,6 @@
 		</jar>
 	</target>
 	<target name="macapp">
-		<jarbundler dir="jar"
-		            name="SpaceZombiesLauncher"
-		            mainclass="cx.it.hyperbadger.spacezombies.launcher.Main" >
-
-		  <jarfilelist dir="jar" file="spacezombieslauncher.jar" />
-
-		</jarbundler>
+		<jarbundler dir="jar" name="SpaceZombiesLauncher" mainclass="cx.it.hyperbadger.spacezombies.launcher.Main" jar="jar/spacezombieslauncher.jar" />
 	</target>
 </project>
