@@ -16,6 +16,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 public class Main {
+	public static final String loginURL = "http://spacezombies.hyperbadger.it.cx/login.php";
 	public static final String title = "SpaceZombies";
 	private final String versionFile = "version.xml";
 	public static final String location = System.getProperty("user.home")+System.getProperty("file.separator")+Main.title;;
